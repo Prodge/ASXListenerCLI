@@ -9,11 +9,11 @@ INSTALL_DIR = $(INSTALL_BASE)/$(NAME)-bin
 INSTALL_EXE = $(INSTALL_BASE)/$(NAME)
 
 venv:
-	virtualenv -p /usr/bin/python3 venv;
+	virtualenv -p /usr/bin/python3 $(VIRTUAL_ENV);
 	$(PIP) install -r ./requirements.txt
 
 clear_venv:
-	rm -rf ./venv
+	rm -rf ./$(VIRTUAL_ENV)
 
 uninstall:
 	rm -rf $(INSTALL_DIR)
