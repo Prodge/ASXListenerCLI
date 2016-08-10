@@ -17,19 +17,19 @@ Each stock will be output in order specified by the -c flag with the specified f
 
 ### Flags
 ```
--h For help.
--s [interval] Subscribe prints updates at the given interval.
--r get the raw hash map returned.
--f [format] Specify the format to display the results.
--c [Security Codes] A comma seperated list of company security codes (case insensitive).
--o If set, subscribe will overwrite the current line as opposed to printing a new line.
+-h --help                     For help.
+-s --subscribe [interval]     Subscribe prints updates at the given interval.
+-r --raw                      Get the raw hash map returned.
+-f --format [format string]   Specify the format to display the results.
+-c --codes [Security Codes]   A comma seperated list of company security codes (case insensitive).
+-o --overwrite                If set, subscribe will overwrite the current line as opposed to printing a new line.
 ```
 
 ### Format Specifiers
 ```
-{code}
-{price}
-{percent_change}
+{code}            The stock security code.
+{price}           The current price.
+{percent_change}  The percentage of price change today.
 ...
 
 ```
