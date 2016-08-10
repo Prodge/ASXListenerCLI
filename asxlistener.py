@@ -38,7 +38,7 @@ def strip_to_after_prefix(page, prefix):
     for i in range(len(page) - len(prefix)):
         if page[i: i+len(prefix)] == prefix:
             return page[i + len(prefix):]
-    raise Exception('Could not strip to prefix [{}], ASX page html has changed.'.format(prefix))
+    raise Exception('Could not strip to prefix [{}], you may have used the wrong security code or the ASX page html has changed.'.format(prefix))
 
 def get_page_to_postfix(page, postfix):
     '''
@@ -48,7 +48,7 @@ def get_page_to_postfix(page, postfix):
     for i in range(len(page) - len(postfix)):
         if page[i: i+len(postfix)] == postfix:
             return page[: i]
-    raise Exception('Could not find postfix, ASX page html has changed.')
+    raise Exception('Could not find postfix, you may have used the wrong security code or the ASX page html has changed.')
 
 def get_content_of_next_tag(page, tag):
     '''
@@ -131,13 +131,19 @@ def validate_args(args):
         fail_execution('Subscribe (-s) must be activated to use overwrite (-o)')
     if args.raw and args.format:
         fail_execution('Cannot display both raw (-r) and formatted (-f) string')
+    return args
 
 def fail_execution(msg):
     print('Fail: {}.'.format(msg))
     sys.exit(1)
 
+def validate_security_codes(codes):
+    if len(codes) > 10:
+        fail_execution('Cannot display more than 10 security codes at once')
+    return codes
+
 def parse_security_codes(codes):
-    return [code.upper() for code in codes.split(',')]
+    return validate_security_codes([code.upper() for code in codes.split(',')])
 
 def print_formatted_string(code_map, args):
     for code in code_map:
@@ -150,8 +156,7 @@ def display_output(code_map, args):
         print_formatted_string(code_map, args)
 
 def main():
-    args = parse_args()
-    validate_args(args)
+    args = validate_args(parse_args())
     codes = parse_security_codes(args.codes)
     running = True
     while running:
