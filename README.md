@@ -8,7 +8,7 @@ Displays Real-Time ASX information in a CLI
 ```
 git clone https://github.com/Prodge/ASXListenerCLI.git
 cd ASXListenerCLI
-make install
+sudo make install
 ```
 
 ## Usage
