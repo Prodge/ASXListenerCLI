@@ -22,7 +22,7 @@ Each stock will be output in order specified by the -c flag with the specified f
 -r get the raw hash map returned.
 -f [format] Specify the format to display the results.
 -c [Security Codes] A comma seperated list of company security codes (case insensitive).
--l If set, subscribe will overwrite the current line as opposed to printing a new line.
+-o If set, subscribe will overwrite the current line as opposed to printing a new line.
 ```
 
 ### Format Specifiers
