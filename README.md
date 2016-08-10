@@ -13,6 +13,7 @@ Run '''asxlistener''' after installing followed by the below flags.
 Each stock will be output in order specified by the -c flag with the specified format.
 
 ### Flags
+-h For help
 -s [interval] Subscribe prints updates at the given interval
 -r get the raw hash map returned
 -f [format] Specify the format to display the results
