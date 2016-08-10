@@ -37,8 +37,8 @@ Each stock will be output in order specified by the -c flag with the specified f
  $ asxlistener -c nab -f "Stock: {code}, Price: {price}"
  > Stock: NAB, Price: 22.220
 
-# Long form arguments can be used and security codes are case insensitive
- $ asxlistener --codes nab,AGL --format "Stock: {code}, Price: {price} ({percent_change})"
+# Multiple stocks, long form arguments, case insensitive security codes:
+ $ asxlistener --codes Nab,AGL --format "Stock: {code}, Price: {price} ({percent_change})"
  > Stock: NAB, Price: 22.220 (-1.05%)
  > Stock: AGL, Price: 5.460 (+0.46%)
 ```
