@@ -32,5 +32,6 @@ Each stock will be output in order specified by the -c flag with the specified f
 
 ### Examples
 ```
-"Stock: {code} Price: {price} "
+$ asxlistener -c nab -f "Stock: {code}, Price: {price}"
+> Stock: NAB, Price: 22.220
 ```
