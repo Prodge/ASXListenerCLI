@@ -44,4 +44,8 @@ Each stock will be output in order specified by the -c flag with the specified f
  $ asxlistener --codes Nab,AGL --format "{code}: {price} ({percent_change})"
  > NAB: 22.220 (-1.05%)
  > AGL: 5.460 (+0.46%)
+
+# Output raw data for external processing:
+ $ asxlistener -c cba -r
+ > [{'code': 'CBA', 'low': '77.210', 'percent_change': '-1.29%', 'change': '-1.010', 'price': '77.400', 'open': '78.000', 'volume': '4,090,305', 'bid': '77.400', 'high': '79.090', 'offer': '77.440', }]
 ```
