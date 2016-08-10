@@ -9,6 +9,8 @@ make install
 '''
 
 ## Usage
+Run '''asxlistener''' after installing followed by the below flags.
+Each stock will be output in order specified by the -c flag with the specified format.
 
 ### Flags
 -s [interval] Subscribe prints updates at the given interval
