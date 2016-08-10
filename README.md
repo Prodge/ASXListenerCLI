@@ -26,6 +26,7 @@ Each stock will be output in order specified by the -c flag with the specified f
 ```
 
 ### Format Specifiers
+Wherever you place {one of these} it will be replaced with the corresponding data shown below.
 ```
 {code}            The stock security code.
 {price}           The current price.
