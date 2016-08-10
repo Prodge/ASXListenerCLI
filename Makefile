@@ -26,6 +26,6 @@ install: venv uninstall
 	cp -r ./$(VIRTUAL_ENV) $(INSTALL_DIR)/$(VIRTUAL_ENV)
 	cp ./$(NAME).py $(INSTALL_DIR)/$(NAME).py
 	# Create executable script for running python script with the virtual environment
-	echo "#!/bin/bash" >> $(INSTALL_EXE)
-	echo "$(INSTALL_DIR)/$(PYTHON) $(INSTALL_DIR)/$(NAME).py" >> $(INSTALL_EXE)
+	echo '#!/bin/bash' >> $(INSTALL_EXE)
+	echo '$(INSTALL_DIR)/$(PYTHON) $(INSTALL_DIR)/$(NAME).py "$@"' >> $(INSTALL_EXE)
 	chmod +x $(INSTALL_EXE)
