@@ -38,7 +38,6 @@ Wherever you place {one of these} it will be replaced with the corresponding dat
 {high}            The highest price for the security today.
 {low}             The lowest price for the security today.
 {volume}          The number of securities traded today.
-...
 
 ```
 
