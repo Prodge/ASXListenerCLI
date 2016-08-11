@@ -53,7 +53,7 @@ Wherever you place {one of these} it will be replaced with the corresponding dat
  > NAB: $22.220 (-1.05%)
  > AGL: $5.460 (+0.46%)
 
-# Output raw json for external processing:
+# Output all data as json:
  $ asxlistener -c cba -r
  > [{'code': 'CBA', 'low': '77.210', 'percent_change': '-1.29%', 'change': '-1.010', 'price': '77.400', 'open': '78.000', 'volume': '4,090,305', 'bid': '77.400', 'high': '79.090', 'offer': '77.440'}]
 ```
