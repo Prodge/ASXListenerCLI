@@ -133,6 +133,8 @@ def validate_args(args):
         fail_execution('Subscribe (-s) must be activated to use overwrite (-o)')
     if args.raw and args.format:
         fail_execution('Cannot display both raw (-r) and formatted (-f) string')
+    if args.overwrite and len(args.codes.split(',')) > 1:
+        fail_execution('Overwrite (-o) can only be used with one security code')
     return validate_format_string(args)
 
 def fail_execution(msg):
@@ -181,11 +183,17 @@ def get_formatted_string(code, format):
 def get_formatted_strings(code_map, args):
     return list(map(lambda code: get_formatted_string(code, args.format), code_map))
 
+def print_output(output, overwrite):
+    if overwrite:
+        print(' '+output, end='\r')
+    else:
+        print(output)
+
 def display_output(code_map, args):
     if args.raw:
-        print(json.dumps(code_map))
+        print_output(json.dumps(code_map), args.overwrite)
     else:
-        list(map(print, get_formatted_strings(code_map, args)))
+        list(map(lambda s: print_output(s, args.overwrite), get_formatted_strings(code_map, args)))
 
 def main():
     args = validate_args(parse_args())
