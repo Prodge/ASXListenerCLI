@@ -52,4 +52,13 @@ Wherever you place {one of these} it will be replaced with the corresponding dat
 # Output all data as json:
  $ asxlistener -c cba -r
  > [{'code': 'CBA', 'low': '77.210', 'percent_change': '-1.29%', 'change': '-1.010', 'price': '77.400', 'open': '78.000', 'volume': '4,090,305', 'bid': '77.400', 'high': '79.090', 'offer': '77.440'}]
+
+# Significant points throughout the day with many stocks (the limit is 10):
+ $ asxlistener -c hhl,kor,rvy,hog,apd,asl -f "{code}: current {price}, open {open}, high {high}, low {low}"
+ > HHL: current 4.070, open 0.000, high 0.000, low 0.000
+ > KOR: current 0.022, open 0.000, high 0.000, low 0.000
+ > RVY: current 0.033, open 0.027, high 0.035, low 0.027
+ > HOG: current 0.006, open 0.000, high 0.000, low 0.000
+ > APD: current 0.510, open 0.505, high 0.510, low 0.505
+ > ASL: current 1.040, open 1.110, high 1.115, low 1.040
 ```
