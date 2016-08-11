@@ -1,6 +1,8 @@
 # ASXListenerCLI
 Displays Real-Time ASX information in a CLI.
 
+![tty recording](https://raw.githubusercontent.com/Prodge/ASXListenerCLI/master/tty.gif)
+
 ## Install
 ```
 git clone https://github.com/Prodge/ASXListenerCLI.git
