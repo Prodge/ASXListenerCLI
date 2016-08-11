@@ -1,8 +1,5 @@
-## VERY MUCH UNDER DEVELOPMENT
-You can use it but its not going to do much
-
 # ASXListenerCLI
-Displays Real-Time ASX information in a CLI
+Displays Real-Time ASX information in a CLI.
 
 ## Install
 ```
