@@ -170,8 +170,7 @@ def merge_lists_into_string(a, b, string):
     if b:
         string += b.pop(0)
     if a or b:
-        string = merge_lists_into_string(a, b, string)
-    return string
+        return merge_lists_into_string(a, b, string)
 
 def get_formatted_string(code, format):
     split = re.split('{|}', format)
