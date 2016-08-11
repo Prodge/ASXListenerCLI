@@ -10,6 +10,8 @@
 
 '''
 import sys
+import re
+import json
 
 import requests
 
@@ -131,7 +133,7 @@ def validate_args(args):
         fail_execution('Subscribe (-s) must be activated to use overwrite (-o)')
     if args.raw and args.format:
         fail_execution('Cannot display both raw (-r) and formatted (-f) string')
-    return args
+    return validate_format_string(args)
 
 def fail_execution(msg):
     print('Fail: {}.'.format(msg))
@@ -145,16 +147,45 @@ def validate_security_codes(codes):
 def parse_security_codes(codes):
     return validate_security_codes([code.upper() for code in codes.split(',')])
 
-def print_formatted_string(code_map, args):
-    for code in code_map:
-        print('not implemented')
+def validate_format_string(args):
+    # every { is followed by a }
+    return args
+
+def validate_specifiers(specifiers):
+    for specifier in specifiers:
+        if specifier not in DATA_CELLS + ['code']:
+            fail_execution('Invalid format specifier "{}"'.format(specifier))
+    return specifiers
+
+def get_specifiers(code, split_string):
+    return validate_specifiers(
+        list(map(lambda a: a[1],
+            list(filter(lambda a: a[0]%2==1, enumerate(split_string))))))
+
+def merge_lists_into_string(a, b, string):
+    if a:
+        string += a.pop(0)
+    if b:
+        string += b.pop(0)
+    if a or b:
+        string = merge_lists_into_string(a, b, string)
+    return string
+
+def get_formatted_string(code, format):
+    split = re.split('{|}', format)
+    specifiers = get_specifiers(code, split)
+    non_specifiers = list(filter(lambda a: a not in specifiers, split))
+    converted_specifiers = list(map(lambda spec: code[spec], specifiers))
+    return merge_lists_into_string(non_specifiers, converted_specifiers, '')
+
+def get_formatted_strings(code_map, args):
+    return list(map(lambda code: get_formatted_string(code, args.format), code_map))
 
 def display_output(code_map, args):
     if args.raw:
-        # ToDo: Make this json
-        print(code_map)
+        print(json.dumps(code_map))
     else:
-        print_formatted_string(code_map, args)
+        list(map(print, get_formatted_strings(code_map, args)))
 
 def main():
     args = validate_args(parse_args())
