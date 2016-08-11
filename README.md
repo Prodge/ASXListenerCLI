@@ -30,7 +30,14 @@ Wherever you place {one of these} it will be replaced with the corresponding dat
 ```
 {code}            The stock security code.
 {price}           The current price.
+{change}          The amount the value has changed today.
 {percent_change}  The percentage of price change today.
+{bid}             The current buying price.
+{offer}           The current selling price.
+{open}            The price at which the first trade took place today.
+{high}            The highest price for the security today.
+{low}             The lowest price for the security today.
+{volume}          The number of securities traded today.
 ...
 
 ```
