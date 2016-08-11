@@ -18,7 +18,7 @@ Each stock will be output in order specified by the -c flag with the specified f
 ### Flags
 ```
 -h --help                     For help.
--s --subscribe [interval]     Subscribe prints updates at the given interval.
+-s --subscribe [interval]     Subscribe prints updates at the given interval (in minutes).
 -r --raw                      Get the raw hash map returned as json.
 -f --format [format string]   Specify the format to display the results.
 -c --codes [Security Codes]   A comma seperated list of company security codes (case insensitive).
