@@ -150,7 +150,15 @@ def parse_security_codes(codes):
     return validate_security_codes([code.upper() for code in codes.split(',')])
 
 def validate_format_string(args):
-    # every { is followed by a }
+    looking_for_next = {'{': '}', '}': '{'}
+    looking_for = '{'
+    not_looking_for = '}'
+    for char in args.format:
+        if char == not_looking_for:
+            fail_execution('Braces do not ballance correctly in format string')
+        if char == looking_for:
+            not_looking_for = looking_for
+            looking_for = looking_for_next[looking_for]
     return args
 
 def validate_specifiers(specifiers):
@@ -159,7 +167,7 @@ def validate_specifiers(specifiers):
             fail_execution('Invalid format specifier "{}"'.format(specifier))
     return specifiers
 
-def get_specifiers(code, split_string):
+def get_specifiers(split_string):
     return validate_specifiers(
         list(map(lambda a: a[1],
             list(filter(lambda a: a[0]%2==1, enumerate(split_string))))))
@@ -175,7 +183,7 @@ def merge_lists_into_string(a, b, string):
 
 def get_formatted_string(code, format):
     split = re.split('{|}', format)
-    specifiers = get_specifiers(code, split)
+    specifiers = get_specifiers(split)
     non_specifiers = list(filter(lambda a: a not in specifiers, split))
     converted_specifiers = list(map(lambda spec: code[spec], specifiers))
     return merge_lists_into_string(non_specifiers, converted_specifiers, '')
